@@ -36,6 +36,9 @@ for service in ${services[@]}; do
     killapp "$service";
 done
 
+# Fix cron jobs base directory
+mkdir -p "$HOME/.config/cron"
+
 #start shepherd
 shepherd -c /etc/px/user-services.scm
 # shepherd -c /home/panther/projects/px-user-services/etc/px/user-services.scm

@@ -8,7 +8,8 @@
   (make-service
     #:provides '(mcron)
     #:start (make-forkexec-constructor '("mcron"))
-    #:stop (make-kill-destructor)))
+    #:stop (make-kill-destructor)
+    #:enable #t))
 
 
 (define px-secret-service
@@ -45,7 +46,8 @@
 (register-services px-secret-service
                      px-events-service
                      px-accounts-service
-                     px-settings-service)
+                     px-settings-service
+                     mcron)
 (action 'shepherd 'daemonize)
 
 
