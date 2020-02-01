@@ -36,7 +36,7 @@ now you need to register service to list of shepherd services:
 and finally you need to add service to list of auto starting services:
 
 ```diff
-(for-each start
+ (for-each start
           (list service-1
                 service-2
                 ...
@@ -55,5 +55,5 @@ services=(
     ...
 +   service-process-name
     ...
-)
+ )
 ```
