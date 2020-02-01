@@ -11,7 +11,6 @@
     #:stop (make-kill-destructor)
     #:enable #t))
 
-
 (define px-secret-service
   (make-service
     #:provides '(px-secret-service)
@@ -29,7 +28,7 @@
 (define px-accounts-service
   (make-service
     #:provides '(px-accounts-service)
-    #:requires '(px-secret-service 
+    #:requires '(px-secret-service
                  px-events-service)
     #:start (make-forkexec-constructor '("px-accounts-service"))
     #:stop (make-kill-destructor)
@@ -43,10 +42,32 @@
     #:stop (make-kill-destructor)
     #:enabled? #t))
 
+(define px-mastodon-service
+  (make-service
+    #:provides '(px-mastodon-service)
+    #:requires '(px-secret-service
+                 px-events-service
+                 px-accounts-service)
+    #:start (make-forkexec-constructor '("px-mastodon-service"))
+    #:stop (make-kill-destructor)
+    #:enabled? #t))
+
+(define px-hub-service
+  (make-service
+    #:provides '(px-hub-service)
+    #:requires '(px-events-service
+                 px-accounts-service
+                 px-mastodon-service)
+    #:start (make-forkexec-constructor '("px-hub-service"))
+    #:stop (make-kill-destructor)
+    #:enabled? #t))
+
 (register-services px-secret-service
                      px-events-service
                      px-accounts-service
                      px-settings-service
+                     px-mastodon-service
+                     px-hub-service
                      mcron)
 (action 'shepherd 'daemonize)
 
@@ -56,4 +77,6 @@
                 px-secret-service
                 px-events-service
                 px-accounts-service
-                px-settings-service))
+                px-settings-service
+                px-mastodon-service
+                px-hub-service))

@@ -6,6 +6,8 @@ services=(
     px-events-service
     px-secret-service
     px-settings-service
+    px-mastodon-service
+    px-hub-service
 )
 
 getpid() {
