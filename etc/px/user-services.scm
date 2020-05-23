@@ -11,6 +11,16 @@
     #:stop (make-kill-destructor)
     #:enable #t))
 
+(define px-contacts-calendar-service
+  (make-service
+    #:provides '(px-contacts-calendar-service)
+    #:requires '(px-secret-service
+                 px-events-service
+                 px-accounts-service)
+    #:start (make-forkexec-constructor '("etesync-dav"))
+    #:stop (make-kill-destructor)
+    #:enable? #t))
+
 (define px-secret-service
   (make-service
     #:provides '(px-secret-service)
@@ -63,17 +73,19 @@
     #:enabled? #t))
 
 (register-services px-secret-service
-                     px-events-service
-                     px-accounts-service
-                     px-settings-service
-                     px-mastodon-service
-                     px-hub-service
-                     mcron)
+                   px-events-service
+                   px-accounts-service
+                   px-settings-service
+                   px-mastodon-service
+                   px-hub-service
+                   px-contacts-calendar-service
+                   mcron)
 (action 'shepherd 'daemonize)
 
 
 (for-each start 
           (list mcron
+                px-contacts-calendar-service
                 px-secret-service
                 px-events-service
                 px-accounts-service
