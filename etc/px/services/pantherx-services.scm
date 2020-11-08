@@ -1,15 +1,7 @@
-(use-modules (guix)
-             (gnu))
 
 (define (make-service . args)
   (apply make <service> args))
 
-(define mcron 
-  (make-service
-    #:provides '(mcron)
-    #:start (make-forkexec-constructor '("mcron"))
-    #:stop (make-kill-destructor)
-    #:enable #t))
 
 (define px-contacts-calendar-service
   (make-service
@@ -78,14 +70,10 @@
                    px-settings-service
                    px-mastodon-service
                    px-hub-service
-                   px-contacts-calendar-service
-                   mcron)
-(action 'shepherd 'daemonize)
-
+                   px-contacts-calendar-service)
 
 (for-each start 
-          (list mcron
-                px-contacts-calendar-service
+          (list px-contacts-calendar-service
                 px-secret-service
                 px-events-service
                 px-accounts-service
