@@ -58,8 +58,7 @@
   (make-service
     #:provides '(px-hub-service)
     #:requires '(px-events-service
-                 px-accounts-service
-                 px-mastodon-service)
+                 px-accounts-service)
     #:start (make-forkexec-constructor '("px-hub-service"))
     #:stop (make-kill-destructor)
     #:enabled? #t))
@@ -68,8 +67,8 @@
                    px-events-service
                    px-accounts-service
                    px-settings-service
-                   px-mastodon-service
                    px-hub-service
+                   px-mastodon-service
                    px-contacts-calendar-service)
 
 (for-each start 
@@ -78,5 +77,5 @@
                 px-events-service
                 px-accounts-service
                 px-settings-service
-                px-mastodon-service
-                px-hub-service))
+                px-hub-service
+                px-mastodon-service))
