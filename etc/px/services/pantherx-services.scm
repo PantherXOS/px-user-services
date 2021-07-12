@@ -68,12 +68,10 @@
                    px-accounts-service
                    px-settings-service
                    px-hub-service
-                   px-mastodon-service
-                   px-contacts-calendar-service)
+                   px-mastodon-service)
 
 (for-each start 
-          (list px-contacts-calendar-service
-                px-secret-service
+          (list px-secret-service
                 px-events-service
                 px-accounts-service
                 px-settings-service
