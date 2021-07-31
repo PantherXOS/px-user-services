@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=QSyncthingTray
-Name=QSyncthingTray
+Exec=syncthingtray
+Name=SyncthingTray
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
