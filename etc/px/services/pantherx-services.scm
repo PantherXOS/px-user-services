@@ -9,7 +9,7 @@
     #:requires '(px-secret-service
                  px-events-service
                  px-accounts-service)
-    #:start (make-forkexec-constructor '("etesync-dav"))
+    #:start (make-forkexec-constructor '("px-contacts-calendar-server"))
     #:stop (make-kill-destructor)
     #:enable? #t))
 
@@ -68,7 +68,8 @@
                    px-accounts-service
                    px-settings-service
                    px-hub-service
-                   px-mastodon-service)
+                   px-mastodon-service
+                   px-contacts-calendar-service)
 
 (for-each start 
           (list px-secret-service
@@ -76,4 +77,5 @@
                 px-accounts-service
                 px-settings-service
                 px-hub-service
-                px-mastodon-service))
+                px-mastodon-service
+                px-contacts-calendar-service))
