@@ -63,11 +63,20 @@
     #:stop (make-kill-destructor)
     #:enabled? #t))
 
+(define px-time-tracking-service
+  (make-service
+    #:provides '(px-time-tracking-service)
+    #:requires '(px-accounts-service)
+    #:start (make-forkexec-constructor '("px-time-tracking-service"))
+    #:stop (make-kill-destructor)
+    #:enabled? #t))
+
 (register-services px-secret-service
                    px-events-service
                    px-accounts-service
                    px-settings-service
                    px-hub-service
+                   px-time-tracking-service
                    px-mastodon-service
                    px-contacts-calendar-service)
 
@@ -77,5 +86,6 @@
                 px-accounts-service
                 px-settings-service
                 px-hub-service
+                px-time-tracking-service
                 px-mastodon-service
                 px-contacts-calendar-service))
