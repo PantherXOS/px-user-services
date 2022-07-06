@@ -76,7 +76,7 @@
                    px-accounts-service
                    px-settings-service
                    px-hub-service
-                   px-time-tracking-service
+                   ;px-time-tracking-service    https://git.pantherx.org/development/applications/px-time-tracking/-/issues/35
                    px-mastodon-service
                    px-contacts-calendar-service)
 
@@ -86,6 +86,6 @@
                 px-accounts-service
                 px-settings-service
                 px-hub-service
-                px-time-tracking-service
+                ;px-time-tracking-service     https://git.pantherx.org/development/applications/px-time-tracking/-/issues/35
                 px-mastodon-service
                 px-contacts-calendar-service))
